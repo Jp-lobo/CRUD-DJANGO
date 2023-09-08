@@ -1,0 +1,34 @@
+{% extends 'static/index.html' %}
+
+{% block titulo %} Libros {% endblock titulo %}
+{% block contenido %}
+    <div class="table-responsive">
+        <table class="table table-primary">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for libro in libros %}
+                <tr class="">
+                    <td scope="row">{{libro.id}}</td>
+                    <td>{{libro.titulo}}</td>
+                    <td>
+                        <img src="{{libro.img.url}}" height="100">
+                    </td>
+                    <td>{{libro.des}}</td>
+                    <td>
+                        <a name="editar" id="editar_btn" class="btn btn-primary" href="{% url 'editar' libro.id%}" role="button">Editar</a> | 
+                        <a name="eliminar" id="eliminar_btn" class="btn btn-danger" href="{% url 'eliminar' libro.id %}" role="button">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock contenido %}

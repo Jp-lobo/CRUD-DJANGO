@@ -1,0 +1,25 @@
+<form enctype="multipart/form-data" method="post">
+
+  {% csrf_token %}
+  
+  {% for datos in formulario %}
+    <div class="mb-3">
+      <label for="" class="form-label">{{datos.label}}</label>
+      {% if datos.field.widget.input_type == "file" and datos.value %}
+      <br>
+      <img src="{{MEDIA_URL}}/imagenes/{{datos.value}}" height="100">
+      {% endif %}
+      <input 
+      type="{{datos.field.widget.input_type}}"
+      class="form-control"
+      name="{{datos.name}}"
+      id="titulo"
+      aria-describedby="Titulo"
+      placeholder="{{datos.label}}"
+      value="{{ datos.value | default:''}}"  
+      />
+    </div>
+    <div class="col-12 help-text"> {{datos.errors}}</div>
+  {% endfor %}
+  <input name="" id="" class="btn btn-primary" type="submit" value="Enviar">
+</form>
