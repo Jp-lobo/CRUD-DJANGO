@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import biblioteca, prestamos
+from .models import biblioteca, prestamos, users
 from .form import formula
 
 # Create your views here.
@@ -17,8 +17,9 @@ def editar(request, id):
 
 def estado(request, id):
     libro = biblioteca.objects.get(id=id)
-    prestamo = prestamos.objects.get(id_libro_id=id)
-    return render(request, "files/estado.html",{"prestamos": prestamo,"libro":libro})
+    prestamo = prestamos.objects.filter(id_libro_id=id).order_by("-fecha_prestamo")
+    estado = "Disponible"
+    return render(request, "files/estado.html",{"prestamos": prestamo,"libro":libro,"estado":estado})
 
 def libros(request):
     biblio = biblioteca.objects.all()

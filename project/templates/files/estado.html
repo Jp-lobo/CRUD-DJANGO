@@ -2,7 +2,42 @@
 
 {% block titulo %} Detalles {% endblock titulo %}
 {% block contenido %}
-<img src="{{libro.img.url}}" height="100">
-Detalles{{libro.id}}
+
+<section class="libros">
+    <div class="contenido">
+        <img src="{{libro.img.url}}" height="200">
+        {{ estado }}
+    <div>
+</section>
+<section class="libros">
+    <div class="contenido">
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Fec. prestamo</th>
+                        <th scope="col">Fec. plazo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for prestamo in prestamos %}
+                    <tr class="">
+                        <td>{{ prestamo.fecha_prestamo}}</td>
+                        <td>{{ prestamo.fecha_devolucion}}</td>
+                        <td>{{prestamo.id_usuario.nombre}} {{prestamo.id_usuario.apellido}}</td>
+                        <td>{{prestamo.id_usuario.telefono}}</td>
+                        <td>{{prestamo.id_usuario.correo}}</td>
+                        <td>hola</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    <div>
+</section>
 
 {% endblock contenido %}

@@ -10,7 +10,7 @@
                     <th scope="col">Titulo</th>
                     <th scope="col">Imagen</th>
                     <th scope="col">Descripción</th>
-                    <th scope="col">Estado</th>
+                    <th scope="col">Historial</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -23,7 +23,7 @@
                         <img src="{{libro.img.url}}" height="100">
                     </td>
                     <td>{{libro.des}}</td>
-                    <td> <a name="editar" id="editar_btn" class="btn btn-primary" href="{% url 'estado' libro.id%}" role="button"></a>  </td>
+                    <td> <a name="editar" id="editar_btn" class="btn btn-primary" href="{% url 'estado' libro.id%}" role="button">Ver</a></td>
                     <td>
                         <a name="editar" id="editar_btn" class="btn btn-primary" href="{% url 'editar' libro.id%}" role="button">Editar</a> | 
                         <a name="eliminar" id="eliminar_btn" class="btn btn-danger" href="{% url 'eliminar' libro.id %}" role="button">Eliminar</a>
