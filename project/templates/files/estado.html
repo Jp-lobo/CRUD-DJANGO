@@ -1,0 +1,8 @@
+{% extends 'static/index.html' %}
+
+{% block titulo %} Detalles {% endblock titulo %}
+{% block contenido %}
+<img src="{{libro.img.url}}" height="100">
+Detalles{{libro.id}}
+
+{% endblock contenido %}
