@@ -18,7 +18,11 @@ def editar(request, id):
 def estado(request, id):
     libro = biblioteca.objects.get(id=id)
     prestamo = prestamos.objects.filter(id_libro_id=id).order_by("-fecha_prestamo")
-    estado = "Disponible"
+    estado = prestamos.objects.filter(id_libro_id=id,estado=True)
+    if estado.exists():
+        estado = " No Disponible"
+    else:
+        estado = " Disponible"
     return render(request, "files/estado.html",{"prestamos": prestamo,"libro":libro,"estado":estado})
 
 def libros(request):

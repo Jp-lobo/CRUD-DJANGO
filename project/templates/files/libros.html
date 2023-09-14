@@ -3,7 +3,8 @@
 {% block titulo %} Libros {% endblock titulo %}
 {% block contenido %}
     <div class="table-responsive">
-        <table class="table table-primary">
+        <a name="editar" id="tabla_btn" class="btn btn-primary" href="{% url 'tabla'%}" role="button">Registrar</a>
+        <table class="table table-primary">       
             <thead>
                 <tr>
                     <th scope="col">Id</th>

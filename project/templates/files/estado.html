@@ -6,7 +6,7 @@
 <section class="libros">
     <div class="contenido">
         <img src="{{libro.img.url}}" height="200">
-        {{ estado }}
+        <h3>{{ estado }}</h3>
     <div>
 </section>
 <section class="libros">
@@ -20,7 +20,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Numero</th>
                         <th scope="col">Correo</th>
-                        <th scope="col">Estado</th>
+                        <th scope="col">Entrega</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +31,11 @@
                         <td>{{prestamo.id_usuario.nombre}} {{prestamo.id_usuario.apellido}}</td>
                         <td>{{prestamo.id_usuario.telefono}}</td>
                         <td>{{prestamo.id_usuario.correo}}</td>
-                        <td>hola</td>
+                        {% if prestamo.estado == True %}
+                            <td>{{prestamo.estado}}</td>
+                        {% else %}
+                            <td>Entregado</td>
+                        {% endif %}    
                     </tr>
                     {% endfor %}
                 </tbody>
